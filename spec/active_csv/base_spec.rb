@@ -11,12 +11,14 @@ describe ActiveCSV::Base do
 
   describe "attribute readers" do
     it "defines an attribute reader for every column in the csv" do
-      row = CSV::Row.new(["name", "age"], ["joe", "24"])
+      # row = CSV::Row.new(["name", "age"], ["joe", "24"])
+      row = CSV::Row.new(["name", "age", "nil"], ["joe", "24", nil])
 
       active_csv = ActiveCSV::Base.new(row)
 
       expect(active_csv.name).to eq("joe")
       expect(active_csv.age).to eq("24")
+      expect(active_csv.nil).to eq(nil)
     end
   end
 
